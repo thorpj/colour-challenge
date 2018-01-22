@@ -1,4 +1,9 @@
 .idea/*
 *.exe
-.idea/*
-*.exe
+*.pyc
+*.json
+lib/
+lib64/
+share/
+include/
+bin/
