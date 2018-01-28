@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # tkinter
 sudo apt install -y python3-tk
 # Creates a virtual python environment 
