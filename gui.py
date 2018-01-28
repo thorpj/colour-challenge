@@ -156,6 +156,7 @@ class Window(Frame):
             return
         self.render = ImageTk.PhotoImage(self.image)
         self.show_image()
+        self.master.title(self.window_title)
         return self.image
 
     def quit(self):
