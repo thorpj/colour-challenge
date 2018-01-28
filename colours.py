@@ -53,9 +53,6 @@ class Canvas:
         """
         :param x_size: Width of the canvas.
         :param y_size: Height of the canvas.
-        :var pixels: List of Colour objects.
-        :var image:
-        :var image_contents: Used to set the colour of each pixel in the image.
         """
         self.x_size = x_size
         self.y_size = y_size
@@ -114,6 +111,40 @@ def alg_sort_by_component_sum_reverse(x_max, y_max):
     :param y_max:
     """
     return alg_sort_by_component_sum(x_max, y_max, reverse=True)
+
+
+def alg_sort_by_component_difference(x_max, y_max, reverse=False):
+    """
+    Sort by the difference of the red, blue and green components of each colour.
+    :param x_max:
+    :param y_max:
+    :param reverse:
+    """
+    x = 0
+    y = 0
+    coordinates = []
+    for i in range(0, config["image_width"] * config["image_height"]):
+        if x >= x_max:
+            x = 0
+            y += 1
+        if y >= y_max:
+            y = 0
+        coordinates.append((x, y))
+        x += 1
+
+    colours = helpers.generate_colours(Colour)
+    colours.sort(key=lambda colour: (colour.red - colour.green - colour.blue), reverse=reverse)
+
+    return colours, coordinates
+
+
+def alg_sort_by_component_difference_reverse(x_max, y_max):
+    """
+    Reverse sort by the difference of the red, blue and green components of each colour.
+    :param x_max:
+    :param y_max:
+    """
+    return alg_sort_by_component_difference(x_max, y_max, reverse=True)
 
 
 def alg_sort_by_coordinate_sum(x_max, y_max, reverse=False):
