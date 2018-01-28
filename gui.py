@@ -103,6 +103,7 @@ class Window(Frame):
         return image
 
     def show_algorithm(self):
+        # Sets window title, including algorithm name
         algorithm = algorithms[self.algorithms_index]
         algorithm = algorithm.replace("alg_", "")
         parts = algorithm.split("_")
@@ -112,6 +113,7 @@ class Window(Frame):
         self.master.title("{} - {}".format(self.window_title, algorithm))
 
     def toggle_regenerate_button(self, enable=False):
+        # Redraws the random image
         label = "Regenerate"
         if enable and (not self.regenerate_button):
             self.menu.add_command(label=label, command=self.regenerate_image)
@@ -186,6 +188,6 @@ class Window(Frame):
 algorithms = helpers.generate_algorithms()
 
 root = Tk()
-root.geometry("1000x600")
+root.geometry("1000x600")  # Size of the window
 app = Window(root)
 root.mainloop()

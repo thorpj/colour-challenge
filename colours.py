@@ -1,8 +1,6 @@
 from PIL import Image
 import helpers
 
-config = helpers.read_config()
-
 
 class Colour:
     def __init__(self, red, green, blue):
@@ -89,7 +87,7 @@ def alg_sort_by_component_sum(x_max, y_max, reverse=False):
     x = 0
     y = 0
     coordinates = []
-    for i in range(0, config["image_width"] * config["image_height"]):
+    for i in range(0, x_max * y_max):
         if x >= x_max:
             x = 0
             y += 1
@@ -123,7 +121,7 @@ def alg_sort_by_component_difference(x_max, y_max, reverse=False):
     x = 0
     y = 0
     coordinates = []
-    for i in range(0, config["image_width"] * config["image_height"]):
+    for i in range(0, x_max * y_max):
         if x >= x_max:
             x = 0
             y += 1
