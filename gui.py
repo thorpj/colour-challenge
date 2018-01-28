@@ -1,4 +1,5 @@
-from PIL import Image, ImageTk
+from PIL import ImageTk
+import PIL.Image
 from tkinter import *
 from tkinter import simpledialog, filedialog
 import colours
@@ -41,10 +42,12 @@ class Window(Frame):
     def _window_resize_event(self, event):
         self.resize_image(event.width, event.height)
 
-    def resize_image(self, width, height):
+    def resize_image(self, width, height, input_image=None):
         # Fits image to the size of the window
         size = (width, height)
         image = self.image.resize(size, 1)
+        if input_image:
+            return image
         self.image = image
         self.render = ImageTk.PhotoImage(image)
         self.display.delete()
@@ -128,11 +131,15 @@ class Window(Frame):
 
     def save_image(self):
         # Create a save as dialog
+        dimensions = simpledialog.askstring("Dimensions", "Save image with dimensions (width, height)")
+        width, height = [int(dimension) for dimension in dimensions.split(", ")]
+        image = self.resize_image(width, height, input_image=self.image)
+
         path = filedialog.asksaveasfile(mode='w', defaultextension='.png')
         if not path:
             return
         try:
-            self.image.save(path.name)
+            image.save(path.name)
         except IOError:
             simpledialog.messagebox.showinfo("Save", "Failed to save to  {}.".format(path.name))
             return
@@ -143,7 +150,7 @@ class Window(Frame):
         if not path:
             return
         try:
-            self.image = PILImage.open(path.name)
+            self.image = PIL.Image.open(path.name)
         except (KeyError, IOError):
             simpledialog.messagebox.showinfo("Open", "Failed to open {}.".format(path.name))
             return
