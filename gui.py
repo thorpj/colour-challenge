@@ -1,5 +1,4 @@
-from PIL import ImageTk
-from PIL import Image as PILImage  # prevents conflict with tkinter.Image
+from PIL import Image, ImageTk
 from tkinter import *
 from tkinter import simpledialog, filedialog
 import colours
@@ -45,7 +44,7 @@ class Window(Frame):
     def resize_image(self, width, height):
         # Fits image to the size of the window
         size = (width, height)
-        image = self.image.resize(size, PILImage.ANTIALIAS)
+        image = self.image.resize(size, 1)
         self.image = image
         self.render = ImageTk.PhotoImage(image)
         self.display.delete()
