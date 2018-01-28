@@ -230,9 +230,9 @@ def alg_reverse_red(x_max, y_max):
     colours = []
     coordinates = []
 
-    for r in range(31, -1, -1):
-        for g in range(0, 32):
-            for b in range(0, 32):
+    for r in range(32, 0, -1):
+        for g in range(1, 33):
+            for b in range(1, 33):
                 if x >= x_max:
                     x = 0
                     y += 1
@@ -279,9 +279,9 @@ def alg_bgr(x_max, y_max):
     colours = []
     coordinates = []
 
-    for b in range(0, 32):
-        for g in range(0, 32):
-            for r in range(0, 32):
+    for b in range(1, 33):
+        for g in range(1, 33):
+            for r in range(1, 33):
                 if x >= x_max:
                     x = 0
                     y += 1
@@ -304,9 +304,9 @@ def alg_grb(x_max, y_max):
     colours = []
     coordinates = []
 
-    for g in range(0, 32):
-        for r in range(0, 32):
-            for b in range(0, 32):
+    for g in range(1, 33):
+        for r in range(1, 33):
+            for b in range(1, 33):
                 if x >= x_max:
                     x = 0
                     y += 1
@@ -329,9 +329,9 @@ def alg_rbg(x_max, y_max):
     colours = []
     coordinates = []
 
-    for r in range(0, 32):
-        for b in range(0, 32):
-            for g in range(0, 32):
+    for r in range(1, 33):
+        for b in range(1, 33):
+            for g in range(1, 33):
                 if x >= x_max:
                     x = 0
                     y += 1
@@ -341,9 +341,6 @@ def alg_rbg(x_max, y_max):
                 coordinates.append((x, y))
                 x += 1
     return colours, coordinates
-
-
-
 
 
 def create_image(algorithm):

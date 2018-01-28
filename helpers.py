@@ -21,9 +21,9 @@ def generate_coordinates(x_max, y_max):
 
 def generate_colours(Colour):
     colours = []
-    for r in range(0, 32):
-        for g in range(0, 32):
-            for b in range(0, 32):
+    for r in range(1, 33):
+        for g in range(1, 33):
+            for b in range(1, 33):
                 colours.append(Colour(r, g, b))
     return colours
 
