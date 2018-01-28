@@ -132,7 +132,6 @@ class Window(Frame):
         path = filedialog.asksaveasfile(mode='w', defaultextension='.png')
         if not path:
             return
-        print(path)
         try:
             self.image.save(path.name)
         except IOError:

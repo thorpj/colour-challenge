@@ -81,23 +81,6 @@ class Canvas:
         ext = (filename.split("."))[-1].upper()
         self.image.save(filename, ext)
 
-    # def nearest_colour(self, colour, colours=None):
-    #     min_distance = (self.x_size * self.y_size) ** 2
-    #     if (not self.pixels) and (not colours):
-    #         return #TODO error
-    #     if self.pixels and (not colours):
-    #         colours = self.pixels
-    #     for pixel in colours:
-    #         red = colour.red - pixel.red
-    #         green = colour.green - pixel.green
-    #         blue = colour.blue - pixel.blue
-    #         distance = ((red ** 2) + (green ** 2) + (blue ** 2))
-    #         print(min_distance, distance)
-    #         if (distance < min_distance) and (distance != 0):
-    #             nearest_colour = pixel
-    #             min_distance = distance
-    #     return nearest_colour
-
 
 def alg_sort_by_component_sum(x_max, y_max, reverse=False):
     """
@@ -340,5 +323,4 @@ def create_image(algorithm):
     canvas = Canvas(256, 128)
     colours, coordinates = eval(algorithm)(canvas.x_size, canvas.y_size)
     canvas.generate_from_list(colours, coordinates)
-    print(algorithm)
     return canvas.image
